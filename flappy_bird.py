@@ -2,11 +2,21 @@ import pygame
 import sys 
 pygame.init() 
 
-# Basic Stuff
+# Basic Display Stuff
 screen = pygame.display.set_mode((1000, 600))
 pygame.display.set_caption('Flappy Bird')
-bird_icon = pygame.image.load(r'C:\Users\Admin\Downloads\hummingbird.png')
-pygame.display.set_icon(bird_icon)
+flappy_bird_icon = pygame.image.load(r'C:\Users\Admin\OneDrive\Desktop\All Python Projects\Flappy-Bird-\All Images\PikPng.com_flappy-bird-png_2737091.png')
+flappy_bird_icon = pygame.transform.scale(flappy_bird_icon, (32, 32))
+pygame.display.set_icon(flappy_bird_icon)
+
+# Basic User Screen Stuff
+def title(x, y, size):
+    green = (0, 255, 0)
+    title = pygame.font.Font(r'C:\Users\Admin\OneDrive\Desktop\All Python Projects\Flappy-Bird-\All Fonts\Youtube Star.TTF', size)
+    screen.blit(title.render('Flappy Bird', True, green), (x, y))
+
+def background():
+    pass
 
 def flappy_bird():
     game_running = True
@@ -21,11 +31,11 @@ def flappy_bird():
 def main_menu():
     main_menu_running = True
     while main_menu_running:
-        screen.fill((0, 0, 205))
+        background()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit() 
-        screen.blit(pygame.font.SysFont('impact', 20).render('Flappy Bird', True, (0, 0, 0))) # Finish making title
+        title(100, 100, 40) # Finish making title
         pygame.display.update() 
 
 #if __name__ == "__main___":
